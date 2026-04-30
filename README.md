@@ -33,7 +33,7 @@
 
 ### 大规模数据渲染对比
 
-基于 CesiumJS 实现大规模地理点位数据渲染性能对比模块，横向对比 Entity、PointPrimitiveCollection、BillboardCollection 三种渲染方案。其中 Entity 方案在 1 万点时构建耗时超过 1s 且帧率骤降；切换至 PointPrimitiveCollection（GPU 批量上传）后，10 万点构建耗时降至 200ms 以内，帧率稳定在 60 FPS，渲染性能提升约 **5 倍以上**。集成基于 `requestAnimationFrame` 的实时 FPS 监测与构建耗时记录面板，直观呈现不同方案的性能差异。
+基于 CesiumJS 实现大规模地理点位数据渲染性能对比模块，横向对比 Entity、PointPrimitiveCollection、BillboardCollection 三种渲染方案。其中 Entity 方案在 1 万点时构建耗时超过 1s 且帧率骤降；切换至 PointPrimitiveCollection（GPU 批量上传）后，10 万点构建耗时降至 200ms 以内，帧率稳定在 60 FPS，渲染性能提升约 **5 倍以上**。集成基于 `requestAnimationFrame` 的实时 FPS 监测与构建耗时记录面板，直观呈现不同方案的性能差异。支持 1k / 1w / 5w / 10w 四档数据量动态切换，覆盖从小规模交互标注到真实业务中海量 POI / 轨迹点的典型 GIS 场景。
 
 | 渲染方式 | 适用场景 | 10 万点构建耗时 | 帧率 |
 |----------|----------|----------------|------|
