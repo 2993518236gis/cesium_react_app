@@ -1,12 +1,11 @@
-import type { ReactNode } from 'react'
-import Home from '../pages/Home'
-import Map from '../pages/Map'
-import { HomeOutlined, GlobalOutlined } from '@ant-design/icons'
+import type { ReactNode,LazyExoticComponent, ComponentType } from 'react'
+import { HomeOutlined, GlobalOutlined, CarOutlined, BuildOutlined, EnvironmentOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import { Home, Map, ModelViewer, TilesViewer, MapboxViewer, MassDataViewer } from './lazy'
 
 export interface AppRoute {
   path: string
   name: string
-  element?: ReactNode
+  component?: LazyExoticComponent<ComponentType>
   icon?: ReactNode
   children?: AppRoute[]
 }
@@ -15,7 +14,7 @@ export const routes: AppRoute[] = [
   {
     path: '/',
     name: '首页',
-    element: <Home />,
+    component: Home,
     icon: <HomeOutlined />
   },
   {
@@ -26,12 +25,31 @@ export const routes: AppRoute[] = [
       {
         path: '/map/base',
         name: '基础地图',
-        element: <Map />
+        component: Map
       },
       {
         path: '/map/3dtiles',
         name: '3D Tiles',
-        element: <Map />
+        icon: <BuildOutlined />,
+        component: TilesViewer
+      },
+      {
+        path: '/map/models',
+        name: '3D 模型',
+        icon: <CarOutlined />,
+        component: ModelViewer
+      },
+      {
+        path: '/map/mapbox',
+        name: 'MapboxGL',
+        icon: <EnvironmentOutlined />,
+        component: MapboxViewer
+      },
+      {
+        path: '/map/massdata',
+        name: '大规模渲染',
+        icon: <ThunderboltOutlined />,
+        component: MassDataViewer
       }
     ]
   }

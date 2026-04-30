@@ -12,7 +12,8 @@ export default defineConfig({
   resolve: {
     alias:{
       // 告诉vite，cesium这个包不要按普通的npm包处理，用我指定的路径
-      cesium:path.resolve(__dirname,'node_modules/cesium') 
+      cesium:path.resolve(__dirname,'node_modules/cesium'),
+      '@':path.resolve(__dirname,'src')
     }
   },
   define:{
@@ -26,6 +27,9 @@ export default defineConfig({
         manualChunks(id:string):string|void{
           if(id.includes('cesium')){
             return 'cesium'
+          }
+          if(id.includes('mapbox-gl')){
+            return 'mapbox'
           }
           if(id.includes('node_modules')){
             return 'vendor'

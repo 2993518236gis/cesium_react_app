@@ -3,12 +3,13 @@ import MainLayout from '../layout/MainLayout'
 // import Home from '../pages/Home'
 // import MapPage from '../pages/MapPage'
 import { routes } from './routes'
+import { transformRoutes } from '@/utils/transformRoutes'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    children: routes
+    children: transformRoutes(routes)
   }
 ])
 
